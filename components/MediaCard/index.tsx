@@ -14,8 +14,10 @@ import Button from "../Button";
 // import VideoPlayer from "../VideoPlayer";
 import Player from "pro-player";
 import useIsMobile from "~/hooks/useIsMobile.hook";
-import { FiChevronRight } from "react-icons/fi";
+import { FiChevronRight, FiMoreVertical, FiStar } from "react-icons/fi";
 import cookieNames from "~/constants/cookieNames";
+import { BsStarFill, BsStarHalf } from "react-icons/bs";
+import { BiPlus } from "react-icons/bi";
 // import Player from "pro-player-v2";
 
 export default function MediaCard({
@@ -35,19 +37,15 @@ export default function MediaCard({
   link,
   season,
 }: MediaCardProps): JSX.Element {
-  const setCurrentlyHoveredMedia = useStore(
-    (state) => state.setCurrentlyHoveredMedia
-  );
-  const currentlyHoveredMedia = useStore(
-    (state) => state.currentlyHoveredMedia
-  );
+  const setCurrentlyHoveredMedia = useStore((state) => state.setCurrentlyHoveredMedia);
+  const currentlyHoveredMedia = useStore((state) => state.currentlyHoveredMedia);
   const [targetPage, setTargetPage] = useState(link ?? "/");
   const userInfoCookie = Cookies.get(cookieNames.userInfo);
 
-  console.log(action);
-  console.log(type);
-  console.log(id);
-  console.log(uid);
+  // console.log(action);
+  // console.log(type);
+  // console.log(id);
+  // console.log(uid);
 
   // console.log(type);
   // console.log(poster);
@@ -77,14 +75,12 @@ export default function MediaCard({
         }&series=${seriesID}&title=${title}&season=${season}`
       );
     } else if (action === "watch" && type !== "episode") {
-      setTargetPage(
-        `${ROUTES.watch}/movie/${uid}?id=${id as string}&title=${title}`
-      );
+      setTargetPage(`${ROUTES.watch}/movie/${uid}?id=${id as string}&title=${title}`);
     } else setTargetPage(`${ROUTES.details}/${type ?? "movie"}/${id}`);
   }, [action, id, link, seriesID, title, type, uid, season]);
 
-  console.log(targetPage);
-  console.log(type);
+  // console.log(targetPage);
+  // console.log(type);
 
   // const toggleShowAuthModal = () => setShowAuthModal(!showAuthModal);
 
@@ -117,7 +113,7 @@ export default function MediaCard({
       .catch((error) => console.log(error.message));
   };
 
-  console.log("currentlyHoveredMedia ->", currentlyHoveredMedia);
+  // console.log("currentlyHoveredMedia ->", currentlyHoveredMedia);
 
   const onMouseLeave = () => showAltMode && setCurrentlyHoveredMedia("");
 
@@ -138,80 +134,120 @@ export default function MediaCard({
   //   // }, 1000);
   // }, []);
 
-  console.log(watchLevel);
+  // console.log(watchLevel);
 
   return (
-    <div
-      className="flex overflow-visible rounded-md transition-all"
-      onMouseEnter={onMouseHover}
-      onMouseLeave={onMouseLeave}
-    >
-      {!isMobile &&
-      userInfoCookie &&
-      showAltMode &&
-      currentlyHoveredMedia === String(uid + currentIndex) ? (
-        <div
-          onMouseLeave={onMouseLeave}
-          className={`absolute bg-white dark:bg-[#141414] rounded-md p-2 scale-[1.2] mt-[20px] w-[350px] h-max -ml-[55px] alt-media-card z-[20] max-h-[280px] ${
-            currentIndex === 0 && "ml-[60px]"
-          } ${currentIndex === maxIndex && "-ml-[160px]"}`}
-        >
-          {trailer ? (
-            <Link href={targetPage}>
-              <Player
-                poster={getThumbnail(poster)}
-                src={trailer}
-                muted
-                autoPlay
-                className="h-[150px] w-full bg-gray-200 dark:bg-black"
-              />
-            </Link>
-          ) : (
-            <div className="h-[150px] w-full bg-gray-200 dark:bg-black"></div>
-          )}
-          <div className="text-sm px-2 w-full h-full">
-            <div className="flex items-center justify-between">
-              <p className="font-[500] truncate">
-                {capitalizeFirstLetters(title)}
-              </p>
-              <Link href={targetPage}>
-                <Button variant="text" className="text-[10px] text-primary">
-                  More info
-                  <FiChevronRight className="-ml-1" />
-                </Button>
-              </Link>
-            </div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="opacity-80 max-lines-3 leading-[17px] text-[10px]"
-            >
-              {details?.description}
-            </motion.p>
-            {/* <Link href={targetPage}>
-              <div className="hover:opacity-60 transition-all w-[33px] h-[33px] p-2 pl-[10px] bg-white rounded-full flex items-center justify-center">
-                <FaPlay color="black" />
-              </div>
-            </Link> */}
+    <div className="bg-gradient-to-b from-primary to-[#450f10] rounded-md p-2">
+      <Image
+        alt={`poster of ${title}`}
+        width={100}
+        height={300}
+        src={poster}
+        className="mb-5 w-full h-[150px] object-cover rounded-md"
+      />
+      <div className="grid gap-3">
+        <h3>Title</h3>
+        <p className="text-sm">
+          Antis dendisinciet persperspe la duciduc imborum eos am fugit unt fuga. Ferio
+          omnientem vend omniam volores
+        </p>
+        <p className="text-sm">2020 | THRILLER | 1hr 05 min</p>
+        <div className="flex items-center justify-between -mt-2">
+          <ul className="flex gap-1">
+            <li>
+              <BsStarFill />
+            </li>
+            <li>
+              <BsStarFill />
+            </li>
+            <li>
+              <BsStarFill />
+            </li>
+            <li>
+              <BsStarFill />
+            </li>
+            <li>
+              <BsStarHalf />
+            </li>
+          </ul>
+          <div className="flex w-max">
+            <Button variant="text" className="w-max -mr-8 -ml-4">
+              <BiPlus className="border w-[30px] h-[30px] rounded-full p-1" />
+            </Button>
+            <Button variant="text" className="w-max -mr-3">
+              <FiMoreVertical className="border w-[30px] h-[30px] rounded-full p-2" />
+            </Button>
           </div>
         </div>
-      ) : (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <Link href={targetPage} className="cursor-pointer">
-            <Image
-              alt={`poster of ${title}`}
-              width={100}
-              height={300}
-              src={poster}
-              className={styles.thumbnail}
-            />
-          </Link>
-          {showTitle && (
-            <p className="mt-2 text-sm">{capitalizeFirstLetters(title)}</p>
-          )}
-        </motion.div>
-      )}
+      </div>
     </div>
+    // <div
+    //   className="flex overflow-visible rounded-md transition-all"
+    //   onMouseEnter={onMouseHover}
+    //   onMouseLeave={onMouseLeave}
+    // >
+    //   {!isMobile &&
+    //   userInfoCookie &&
+    //   showAltMode &&
+    //   currentlyHoveredMedia === String(uid + currentIndex) ? (
+    //     <div
+    //       onMouseLeave={onMouseLeave}
+    //       className={`absolute bg-white dark:bg-[#141414] rounded-md p-2 scale-[1.2] mt-[20px] w-[350px] h-max -ml-[55px] alt-media-card z-[20] max-h-[280px] ${
+    //         currentIndex === 0 && "ml-[60px]"
+    //       } ${currentIndex === maxIndex && "-ml-[160px]"}`}
+    //     >
+    //       {trailer ? (
+    //         <Link href={targetPage}>
+    //           <Player
+    //             poster={getThumbnail(poster)}
+    //             src={trailer}
+    //             muted
+    //             autoPlay
+    //             className="h-[150px] w-full bg-gray-200 dark:bg-black"
+    //           />
+    //         </Link>
+    //       ) : (
+    //         <div className="h-[150px] w-full bg-gray-200 dark:bg-black"></div>
+    //       )}
+    //       <div className="text-sm px-2 w-full h-full">
+    //         <div className="flex items-center justify-between">
+    //           <p className="font-[500] truncate">{capitalizeFirstLetters(title)}</p>
+    //           <Link href={targetPage}>
+    //             <Button variant="text" className="text-[10px] text-primary">
+    //               More info
+    //               <FiChevronRight className="-ml-1" />
+    //             </Button>
+    //           </Link>
+    //         </div>
+    //         <motion.p
+    //           initial={{ opacity: 0 }}
+    //           animate={{ opacity: 1 }}
+    //           className="opacity-80 max-lines-3 leading-[17px] text-[10px]"
+    //         >
+    //           {details?.description}
+    //         </motion.p>
+    //         {/* <Link href={targetPage}>
+    //           <div className="hover:opacity-60 transition-all w-[33px] h-[33px] p-2 pl-[10px] bg-white rounded-full flex items-center justify-center">
+    //             <FaPlay color="black" />
+    //           </div>
+    //         </Link> */}
+    //       </div>
+    //     </div>
+    //   ) : (
+    //     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+    //       <Link href={targetPage} className="cursor-pointer">
+    // <Image
+    //   alt={`poster of ${title}`}
+    //   width={100}
+    //   height={300}
+    //   src={poster}
+    //   className={styles.thumbnail}
+    // />
+    //       </Link>
+    //       {showTitle && <p className="mt-2 text-sm">{capitalizeFirstLetters(title)}</p>}
+    //     </motion.div>
+    //   )}
+    // </div>
   );
 
   // return (

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Carousel from "~/components/Carousel";
+import Carousel, { sliderConfig } from "~/components/Carousel";
 import Header from "~/components/Header";
 import Footer from "~/components/Footer";
 import { setDeviceInfoCookies } from "~/services/auth.service";
@@ -11,13 +11,7 @@ import {
   fetchUserLists,
   removeFromWatchlist,
 } from "~/services/media.service";
-import {
-  Banner,
-  Category,
-  Movie,
-  MovieDetails,
-  SelectedBanner,
-} from "~/interface";
+import { Banner, Category, Movie, MovieDetails, SelectedBanner } from "~/interface";
 import { toast } from "react-hot-toast";
 import getThumbnail from "~/utils/getThumbnail.util";
 import DetailsHero from "~/components/DetailsHero";
@@ -27,6 +21,11 @@ import ROUTES from "~/constants/routes.const";
 import Meta from "~/components/Meta";
 import AuthCheckLayout from "~/layouts/authCheck.layout";
 import cookieNames from "~/constants/cookieNames";
+import Slider from "react-slick";
+import Player from "pro-player";
+import Button from "~/components/Button";
+import { BiPlay, BiPlus } from "react-icons/bi";
+import { FiMoreVertical } from "react-icons/fi";
 
 export default function Home() {
   const { replace } = useRouter();
@@ -81,9 +80,7 @@ export default function Home() {
       if (!banner) return;
 
       let image = getThumbnail(
-        selectedbanner?.preview_image_id ??
-          selectedbanner?.banner_image_id ??
-          ""
+        selectedbanner?.preview_image_id ?? selectedbanner?.banner_image_id ?? ""
       );
 
       if (image) {
@@ -151,18 +148,33 @@ export default function Home() {
     <AuthCheckLayout>
       <Meta />
       <Header />
-      {selectedbanner && bannerTrailer && (
-        <DetailsHero
-          isHomePageBanner
-          title={selectedbanner.title}
-          uid={selectedbanner.uid}
-          id={selectedbanner.content_id}
-          type={selectedbanner.type as string}
-          description={selectedbanner.description}
-          poster={selectedbanner.image}
-          trailerURL={bannerTrailer}
-        />
-      )}
+      {/* {selectedbanner && bannerTrailer && ( */}
+      <span id="banner-slider">
+        <Slider {...sliderConfig(1, 1)}>
+          {["", "", "", "", ""].map((i, index) => (
+            <DetailsHero
+              key={index}
+              title={""}
+              poster={""}
+              type={""}
+              id={""}
+              uid={""}
+              description={""}
+              isHomePageBanner={false}
+              //   key={index}
+              //   isHomePageBanner
+              //   title={"selectedbanner.title"}
+              //   uid={"selectedbanner.uid"}
+              //   id={"selectedbanner.content_id"}
+              //   type={"selectedbanner.type as string"}
+              //   description={"selectedbanner.description"}
+              //   poster={"selectedbanner.image"}
+              //   trailerURL={"bannerTrailer"}
+            />
+          ))}
+        </Slider>
+      </span>
+      {/* )} */}
       <section className="pt-10">
         {watchHistory.length > 0 && (
           <Carousel

@@ -83,7 +83,7 @@ export default function Carousel({
         )}
       </div>
 
-      <Slider className="-ml-3" {...sliderConfig(7)}>
+      <Slider className="-ml-3" {...sliderConfig(5)}>
         {slides.map((item: any, index: number) => (
           <span key={index} className="relative">
             <MediaCard

@@ -10,10 +10,19 @@ import { GoMute, GoUnmute } from "react-icons/go";
 import Cookies from "js-cookie";
 import { useStore } from "~/store";
 import { VODTypes } from "~/enums";
-import { BsFillHeartFill, BsHeart } from "react-icons/bs";
+import {
+  BsFilePlayFill,
+  BsFillHeartFill,
+  BsFillPlayBtnFill,
+  BsHeart,
+  BsPlayBtn,
+} from "react-icons/bs";
 import getThumbnail from "~/utils/getThumbnail.util";
 import Player from "pro-player";
 import cookieNames from "~/constants/cookieNames";
+import durationToReadable from "~/utils/durationToReadable.util";
+import { FiMoreVertical, FiPlay } from "react-icons/fi";
+import { BiMoveVertical, BiPlay, BiPlus } from "react-icons/bi";
 
 interface DetailsHeroProps {
   title: string;
@@ -81,13 +90,60 @@ export default function DetailsHero({
 
   return (
     <>
-      <ShareModal
+      <section className="h-[70vh] w-screen relative overflow-hidden">
+        <Player className="w-screen h-screen absolute top-0 left-0 bg-black" src="" />
+        <div className="text-white absolute w-full h-full z-10 top-0 left-0">
+          <div className="w-full h-full flex flex-col justify-center max-w-[1300px] mx-auto">
+            <div className="max-w-[700px] grid gap-5">
+              <h1 className="text-5xl font-medium">Movie title</h1>
+              <p className="leading-[23px]">
+                Antis dendisinciet persperspe la duciducAntis dendisinciet persperspe la
+                duciduc Antisdisinciet persperspe la duciducAntis dendisinciet persperspe
+                la duciduc Antis dendisinciet persperspe la duciduc
+              </p>
+              <p>2020 | THRILLER | 1hr 05 min</p>
+              <div className="flex -ml-5">
+                <Button className="w-max" variant="text">
+                  <BiPlay className="w-[40px] h-[40px] bg-white text-primary rounded-full pl-1" />
+                </Button>
+                <Button variant="text" className="w-min">
+                  Buy Now
+                </Button>
+                <Button variant="text" className="w-max">
+                  <BiPlus className="border w-[40px] h-[40px] rounded-full p-1" />
+                </Button>
+                <div className="-ml-5" />
+                <Button variant="text" className="w-max">
+                  <FiMoreVertical className="border w-[40px] h-[40px] rounded-full p-2" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* <ShareModal
         text={title}
         image={poster}
         show={showShareModal}
         onClose={toggleShowShareModal}
-      />
-      <section className="relative w-full text-white overflow-hidden">
+      /> */}
+      {/* <section className="h-[60vh] bg-red-500 w-screen"> */}
+      {/* <Player
+          src={trailerURL}
+          poster={getThumbnail(poster)}
+          muted={isMute}
+          autoPlay
+          className=""
+        /> */}
+      {/* <div className="bg-green text-white">
+          <h1>Movie title</h1>
+          <p>
+            Antis dendisinciet persperspe la duciducAntis dendisinciet persperspe la
+            duciduc Antis dendisinciet persperspe la duciduc
+          </p>
+        </div> */}
+      {/* </section> */}
+      {/* <section className="relative text-white overflow-hidden w-screen">
         <Player
           src={trailerURL}
           poster={getThumbnail(poster)}
@@ -95,7 +151,7 @@ export default function DetailsHero({
           autoPlay
           className="w-screen h-screen mt-[-250px]"
         />
-        <div className="max-w-[500px] md:max-w-full px-5 m-auto -mt-32">
+        <div className="max-w-[500px] md:max-w-full px-5 m-auto -mt-32 bg-red-100">
           <div className="details-hero-gradient-overlay w-full h-full absolute top-0 left-0" />
           <div className="md:max-w-[1500px] m-auto relative mt-[-700px] lg:mt-[-650px]">
             {trailerURL && (
@@ -124,46 +180,29 @@ export default function DetailsHero({
               >
                 {title}
               </h1>
-              {!isHomePageBanner && (
-                <ul className="flex items-center gap-5 text-sm flex-wrap overflow-x-scroll">
-                  <li className="whitespace-nowrap">
-                    <p>
-                      <span className="opacity-60">Release Year</span> {year}
-                    </p>
-                  </li>
-                  {/* {type !== VODTypes.Series && (
-                    <li className="whitespace-nowrap">
-                      <p>
-                        <span className="opacity-60">Rating</span> {rating}
-                      </p>
-                    </li>
-                  )} */}
-                  <div className="bg-gray-500 h-3 w-[1px]" />
-                  {type !== VODTypes.Series && (
-                    <li className="whitespace-nowrap">
-                      <span className="opacity-60">{duration}</span>
-                    </li>
-                  )}
-                  {language !== null && (
-                    <>
-                      {type !== VODTypes.Series && (
-                        <div className="bg-gray-500 h-3 w-[1px]" />
-                      )}
-                      <li className="whitespace-nowrap">
-                        <span className="opacity-60">{language}</span>
-                      </li>
-                    </>
-                  )}
-                </ul>
-              )}
+              <p>
+                2020 {year} | THRILLER | {durationToReadable(duration as string)}
+              </p>
+              <div className="flex -ml-5">
+                <Button className="w-max" variant="text">
+                  <BiPlay className="w-[40px] h-[40px] bg-white text-primary rounded-full pl-1" />
+                </Button>
+                <Button variant="text" className="w-min">
+                  Buy Now
+                </Button>
+                <Button variant="text" className="w-max">
+                  <BiPlus className="border w-[40px] h-[40px] rounded-full p-1" />
+                </Button>
+                <div className="-ml-5" />
+                <Button variant="text" className="w-max">
+                  <FiMoreVertical className="border w-[40px] h-[40px] rounded-full p-2" />
+                </Button>
+              </div> 
               <p className="leading-[30px] max-lines-4">{description}</p>
               {type !== VODTypes.Series && (
                 <div className="flex gap-10">
                   {!userInfoCookie ? (
-                    <Button
-                      className="rounded-md w-max"
-                      onClick={toggleShowAuthModal}
-                    >
+                    <Button className="rounded-md w-max" onClick={toggleShowAuthModal}>
                       <IoPlay />
                       Watch Movie
                     </Button>
@@ -187,9 +226,7 @@ export default function DetailsHero({
                     <li>
                       <Button
                         variant="text"
-                        onClick={
-                          isFavorite ? onRemoveFavorite : onAddToFavorite
-                        }
+                        onClick={isFavorite ? onRemoveFavorite : onAddToFavorite}
                       >
                         {isFavorite ? <BsFillHeartFill /> : <BsHeart />}
                         {isFavorite ? "Added to favourites" : "Favourite"}
@@ -207,7 +244,7 @@ export default function DetailsHero({
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

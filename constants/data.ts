@@ -2098,7 +2098,6 @@ export const defaultMeta = {
   url: "",
   twitterCreator: "",
   description: "Enjoy your favourite movies on revo ",
-  image:
-    "https://res.cloudinary.com/follio/image/upload/v1689874004/rqmjmlucasgps2cesl1o.png",
+  image:"https://res.cloudinary.com/follio/image/upload/v1692984887/aud2zcl5ijcvfudbchzl.png",
   image_alt: "Page image for revo",
 };

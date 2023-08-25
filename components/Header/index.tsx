@@ -43,9 +43,7 @@ export default function Header({
   const [query, setQuery] = useState(searchQuery ?? "");
   // const [showAuthModal, setShowAuthModal] = useState(false);
   const [showAccountPopup, setShowAccountPopup] = useState(false);
-  const [profile] = useState(
-    userProfileCookie && JSON.parse(userProfileCookie)
-  );
+  const [profile] = useState(userProfileCookie && JSON.parse(userProfileCookie));
   const toggleShowAuthModal = () => setShowAuthModal(!showAuthModal);
   const toggleShowAccountPopup = (event: any) =>
     setShowAccountPopup(event.type === "mouseenter");
@@ -80,9 +78,9 @@ export default function Header({
               <Image
                 src="/assets/logo.png"
                 alt="logo"
-                className="w-[300px] -ml-14"
-                width={300}
-                height={300}
+                className="w-[180px] -ml-14"
+                width={180}
+                height={180}
               />
             </Link>
             <nav className="-ml-[80px] hidden md:block">

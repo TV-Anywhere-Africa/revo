@@ -137,50 +137,49 @@ export default function MediaCard({
   // console.log(watchLevel);
 
   return (
-    <div className="bg-gradient-to-b from-primary to-[#450f10] rounded-md p-2">
-      <Image
-        alt={`poster of ${title}`}
-        width={100}
-        height={300}
-        src={poster}
-        className="mb-5 w-full h-[150px] object-cover rounded-md"
-      />
-      <div className="grid gap-3">
-        <h3>Title</h3>
-        <p className="text-sm">
-          Antis dendisinciet persperspe la duciduc imborum eos am fugit unt fuga. Ferio
-          omnientem vend omniam volores
-        </p>
-        <p className="text-sm">2020 | THRILLER | 1hr 05 min</p>
-        <div className="flex items-center justify-between -mt-2">
-          <ul className="flex gap-1">
-            <li>
-              <BsStarFill />
-            </li>
-            <li>
-              <BsStarFill />
-            </li>
-            <li>
-              <BsStarFill />
-            </li>
-            <li>
-              <BsStarFill />
-            </li>
-            <li>
-              <BsStarHalf />
-            </li>
-          </ul>
-          <div className="flex w-max">
-            <Button variant="text" className="w-max -mr-8 -ml-4">
-              <BiPlus className="border w-[30px] h-[30px] rounded-full p-1" />
-            </Button>
-            <Button variant="text" className="w-max -mr-3">
-              <FiMoreVertical className="border w-[30px] h-[30px] rounded-full p-2" />
-            </Button>
+    <Link href={targetPage} className="hover:text-white transition-all hover:opacity-80">
+      <div className="bg-gradient-to-b from-primary to-[#450f10] rounded-md p-2">
+        <Image
+          alt={`poster of ${title}`}
+          width={100}
+          height={300}
+          src={poster}
+          className="mb-5 w-full h-[150px] object-cover rounded-md"
+        />
+        <div className="grid gap-3">
+          <h3 className="max-lines-1">{title}</h3>
+          <p className="text-sm max-lines-3">{description}</p>
+          <p className="text-sm">2020 | THRILLER | 1hr 05 min</p>
+          <div className="flex items-center justify-between -mt-2">
+            <ul className="flex gap-1">
+              <li>
+                <BsStarFill />
+              </li>
+              <li>
+                <BsStarFill />
+              </li>
+              <li>
+                <BsStarFill />
+              </li>
+              <li>
+                <BsStarFill />
+              </li>
+              <li>
+                <BsStarHalf />
+              </li>
+            </ul>
+            <div className="flex w-max">
+              <Button variant="text" className="w-max -mr-8 -ml-4">
+                <BiPlus className="border w-[30px] h-[30px] rounded-full p-1" />
+              </Button>
+              <Button variant="text" className="w-max -mr-3">
+                <FiMoreVertical className="border w-[30px] h-[30px] rounded-full p-2" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
     // <div
     //   className="flex overflow-visible rounded-md transition-all"
     //   onMouseEnter={onMouseHover}

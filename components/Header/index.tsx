@@ -101,16 +101,15 @@ export default function Header({
                     TV Series
                   </Link>
                 </li> */}
-                {/* <li>
+                {/* */}
+                <li>
                   <Link
-                    className={
-                      pathname === ROUTES.packages ? "text-primary" : ""
-                    }
-                    href={ROUTES.subscribe}
+                    className={pathname === ROUTES.live ? "text-primary" : ""}
+                    href={ROUTES.live}
                   >
-                    Subscribe
+                    Live
                   </Link>
-                </li> */}
+                </li>
               </ul>
             </nav>
           </div>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BsTwitter } from "react-icons/bs";
-import { FaFacebook, FaPhoneAlt } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaPhoneAlt, FaTiktok } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiInstagramFill } from "react-icons/ri";
 import ROUTES from "~/constants/routes.const";
@@ -20,36 +20,48 @@ export default function Footer() {
                   <Link
                     target="blank_"
                     rel="noreferer"
-                    href="https://www.facebook.com/mCinitv"
+                    href="https://www.facebook.com/100094292525503"
                   >
-                    <FaFacebook
-                      className="hover:text-primary transition-all"
-                      size={30}
-                    />
+                    <FaFacebook className="hover:text-primary transition-all" size={30} />
                   </Link>
                 </li>
                 <li>
                   <Link
                     target="blank_"
                     rel="noreferer"
-                    href="https://twitter.com/mcinitv"
+                    href="https://twitter.com/Revoplus_"
                   >
-                    <BsTwitter
-                      className="hover:text-primary transition-all"
-                      size={30}
-                    />
+                    <BsTwitter className="hover:text-primary transition-all" size={30} />
                   </Link>
                 </li>
                 <li>
                   <Link
                     target="blank_"
                     rel="noreferer"
-                    href="https://instagram.com/mcinitv"
+                    href="https://www.instagram.com/revo.plus/"
                   >
                     <RiInstagramFill
                       className="hover:text-primary transition-all"
                       size={30}
                     />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    target="blank_"
+                    rel="noreferer"
+                    href="https://www.tiktok.com/@Revoplus"
+                  >
+                    <FaTiktok className="hover:text-primary transition-all" size={30} />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    target="blank_"
+                    rel="noreferer"
+                    href="https://www.linkedin.com/company/revoplus/"
+                  >
+                    <FaLinkedin className="hover:text-primary transition-all" size={30} />
                   </Link>
                 </li>
               </ul>
@@ -78,9 +90,9 @@ export default function Footer() {
                   </Link>
                 </li> */}
                 <li>
-                  <Link href="mailto:support@mcini.tv" className="flex gap-3">
+                  <Link href="mailto:customercare@revoplus.com" className="flex gap-3">
                     <MdEmail />
-                    <p>support@mcini.tv</p>
+                    <p>customercare@revoplus.com</p>
                   </Link>
                 </li>
               </ul>

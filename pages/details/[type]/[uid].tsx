@@ -39,19 +39,26 @@ export default function Watch() {
 
   console.log(query);
   useEffect(() => {
-    // console.log(userLists?.movie_bookmarks.length);
     (async () => {
       if (!query.type && !query.uid) return;
       setLoading(true);
+      console.log(query.uid as string, query.type as string);
       await fetchMediaDetails(query.uid as string, query.type as string)
         .then((response: any) => {
-          setMediaDetails(response[0] ?? response);
-          getEpisodesIDs();
+          // console.log(typeof response[0]);
+          // setMediaDetails(response[0] ?? response);
+
+          if (typeof response[0] !== "undefined")
+            setMediaDetails(response[0] ?? response);
+
+          // getEpisodesIDs();
         })
         .catch((error) => {
+          console.log(error.message);
           if (error.message !== "Request failed with status code 403")
             console.log(error.message);
         });
+
       setLoading(false);
 
       await fetchUserLists()
@@ -144,9 +151,7 @@ export default function Watch() {
 
   // console.log(mediaDetails[0] ?? mediaDetails);
   console.log(
-    getThumbnail(
-      mediaDetails?.images.PREVIEW || mediaDetails?.image_store_id || ""
-    )
+    getThumbnail(mediaDetails?.images.PREVIEW || mediaDetails?.image_store_id || "")
   );
 
   console.log(mediaDetails);
@@ -163,15 +168,14 @@ export default function Watch() {
     }
 
     setEpisodeIDs(IDs.toString());
+    console.log("IDs", IDs.toString());
   }
 
   return (
     <>
       <Meta
         title={mediaDetails?.title ?? "mCini TV"}
-        image_alt={`${
-          mediaDetails?.title ?? `Poster for ${mediaDetails?.title}`
-        }`}
+        image_alt={`${mediaDetails?.title ?? `Poster for ${mediaDetails?.title}`}`}
         description={mediaDetails?.description}
         image={getThumbnail(
           mediaDetails?.images.PREVIEW || mediaDetails?.image_store_id || ""

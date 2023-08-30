@@ -12,6 +12,7 @@ const ROUTES = {
   vod: "/vod",
   details: "/details",
   subscribe: "/subscribe",
+  live: "/live",
   privacy: "/privacy",
   terms: "/terms",
   faq: "/faq",

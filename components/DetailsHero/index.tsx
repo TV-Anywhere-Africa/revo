@@ -91,21 +91,24 @@ export default function DetailsHero({
   return (
     <>
       <section className="h-[70vh] w-screen relative overflow-hidden">
-        <Player className="w-screen h-screen absolute top-0 left-0 bg-black" src="" />
+        <Player
+          className="w-screen h-screen absolute top-0 left-0 bg-black"
+          src={trailerURL}
+        />
         <div className="text-white absolute w-full h-full z-10 top-0 left-0">
           <div className="w-full h-full flex flex-col justify-center max-w-[1300px] mx-auto">
             <div className="max-w-[700px] grid gap-5">
-              <h1 className="text-5xl font-medium">Movie title</h1>
-              <p className="leading-[23px]">
-                Antis dendisinciet persperspe la duciducAntis dendisinciet persperspe la
-                duciduc Antisdisinciet persperspe la duciducAntis dendisinciet persperspe
-                la duciduc Antis dendisinciet persperspe la duciduc
-              </p>
-              <p>2020 | THRILLER | 1hr 05 min</p>
+              <h1 className="text-5xl font-medium">{title}</h1>
+              <p className="leading-[23px]">{description}</p>
+              <p>{year} | THRILLER | 1hr 05 min</p>
               <div className="flex -ml-5">
-                <Button className="w-max" variant="text">
-                  <BiPlay className="w-[40px] h-[40px] bg-white text-primary rounded-full pl-1" />
-                </Button>
+                <Link
+                  href={`${ROUTES.watch}/movie/${uid}?id=${id as string}&title=${title}`}
+                >
+                  <Button className="w-max" variant="text">
+                    <BiPlay className="w-[40px] h-[40px] bg-white text-primary rounded-full pl-1" />
+                  </Button>
+                </Link>
                 <Button variant="text" className="w-min">
                   Buy Now
                 </Button>

@@ -152,7 +152,7 @@ export default function Subscribe(): JSX.Element {
           <h2 className="text-center font-[500] text-xl md:text-3xl">
             Get an Unlimited Experience of African Entertainment
           </h2>
-          <ul className="flex flex-col px-5 lg:flex-row items-center justify-between max-w-[1500px] gap-7 pt-10 m-auto">
+          <ul className="grid grid-cols-1 md:grid-cols-2 px-5 items-center justify-between max-w-[1500px] gap-7 pt-10 m-auto">
             {SUBSCRIPTIONS.map((subscription, index: number) => (
               <SubscriptionCard
                 id={subscription.id}

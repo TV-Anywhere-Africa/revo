@@ -460,3 +460,30 @@ export interface DeviceCookie {
   //     cpu: object;
   //   };
 }
+
+export interface Channel {
+  background_image_id: null;
+  dvbt_tag: null | string;
+  epg_channel: string;
+  highlights_enabled: false;
+  id: number;
+  is_dvbt: false;
+  is_mcast: false;
+  is_ott: true;
+  logos: { CARD: number; NORMAL: number; SHADOW: number; LEGACY: null | string };
+  metadata: {};
+  name: string;
+  ott_type: string;
+  parental_hidden: false;
+  position: number;
+  recordable: true;
+  resolution: string;
+  short_name: string;
+  stream_priority: string;
+  timeshiftable: true;
+  ts_rec_duration: number;
+  type: string;
+  uid: string;
+  url_mcast: null;
+  url_ott: null;
+}

@@ -148,32 +148,33 @@ export default function Home() {
     <AuthCheckLayout>
       <Meta />
       <Header />
-      {/* {selectedbanner && bannerTrailer && ( */}
-      <span id="banner-slider">
-        <Slider {...sliderConfig(1, 1)}>
-          {["", "", "", "", ""].map((i, index) => (
-            <DetailsHero
-              key={index}
-              title={""}
-              poster={""}
-              type={""}
-              id={""}
-              uid={""}
-              description={""}
-              isHomePageBanner={false}
-              //   key={index}
-              //   isHomePageBanner
-              //   title={"selectedbanner.title"}
-              //   uid={"selectedbanner.uid"}
-              //   id={"selectedbanner.content_id"}
-              //   type={"selectedbanner.type as string"}
-              //   description={"selectedbanner.description"}
-              //   poster={"selectedbanner.image"}
-              //   trailerURL={"bannerTrailer"}
-            />
-          ))}
-        </Slider>
-      </span>
+      {selectedbanner && bannerTrailer && (
+        <span id="banner-slider">
+          <Slider {...sliderConfig(1, 1)}>
+            {["", "", "", "", ""].map((i, index) => (
+              <DetailsHero
+                key={index}
+                title={selectedbanner?.title}
+                poster={getThumbnail(selectedbanner?.banner_image_id)}
+                type={selectedbanner?.type}
+                id={selectedbanner?.id}
+                uid={selectedbanner?.uid}
+                description={selectedbanner?.description}
+                isHomePageBanner={false}
+                //   key={index}
+                //   isHomePageBanner
+                //   title={"selectedbanner.title"}
+                //   uid={"selectedbanner.uid"}
+                //   id={"selectedbanner.content_id"}
+                //   type={"selectedbanner.type as string"}
+                //   description={"selectedbanner.description"}
+                //   poster={"selectedbanner.image"}
+                //   trailerURL={"bannerTrailer"}
+              />
+            ))}
+          </Slider>
+        </span>
+      )}
       {/* )} */}
       <section className="pt-10">
         {watchHistory.length > 0 && (

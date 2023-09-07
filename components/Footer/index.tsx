@@ -141,7 +141,7 @@ export default function Footer() {
       </>
       <div className="dark:bg-[#2f353b] bg-[#232a3a] p-5 text-center">
         <p className="text-md text-gray-200">
-          Copyright &copy;{new Date().getFullYear()} mCini Inc.
+          Copyright &copy;{new Date().getFullYear()} Revo Plus
         </p>
       </div>
     </footer>

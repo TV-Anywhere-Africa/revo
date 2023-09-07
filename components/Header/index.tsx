@@ -87,14 +87,6 @@ export default function Header({
               <ul className="flex items-center gap-5">
                 {/* <li>
                   <Link
-                    className={pathname === ROUTES.genre ? "text-primary" : ""}
-                    href={ROUTES.genre}
-                  >
-                    Movie genre
-                  </Link>
-                </li> */}
-                {/* <li>
-                  <Link
                     className={pathname === ROUTES.series ? "text-primary" : ""}
                     href={ROUTES.series}
                   >
@@ -108,6 +100,14 @@ export default function Header({
                     href={ROUTES.live}
                   >
                     Live
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={pathname === ROUTES.genre ? "text-primary" : ""}
+                    href={ROUTES.subscribe}
+                  >
+                    Subscribe
                   </Link>
                 </li>
               </ul>

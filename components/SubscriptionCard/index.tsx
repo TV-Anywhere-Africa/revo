@@ -17,7 +17,7 @@ export default function SubscriptionCard({
       <div className="text-center border-b  dark:border-b-gray-500 p-6 grid gap-6 text-gray-700 dark:text-gray-300">
         <h2 className="text-2xl uppercase font-[500]">{name}</h2>
         <h1 className="text-5xl">
-          GH₵{price}
+          ₦{price}
           <span className="text-xl">/{duration}</span>
         </h1>
         <Button
@@ -32,9 +32,7 @@ export default function SubscriptionCard({
         {features.map((feature, index: number) => (
           <li className="flex items-center gap-2" key={index}>
             <FiCheck className="text-primary" />
-            <p className={`${index === 0 && "text-primary"} text-sm`}>
-              {feature}
-            </p>
+            <p className={`${index === 0 && "text-primary"} text-sm`}>{feature}</p>
           </li>
         ))}
       </ul>

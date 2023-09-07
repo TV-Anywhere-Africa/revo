@@ -16,27 +16,27 @@ import AuthCheckLayout from "~/layouts/authCheck.layout";
 const SUBSCRIPTIONS: ISubscription[] = [
   {
     name: "Daily",
-    price: "1.50",
-    uid: "mcini1day",
-    id: "1010",
+    price: "200",
+    uid: "",
+    id: "",
     duration: "Daily",
-    features: [
-      "Watch on 3 screens at the same time",
-      "Unlimited HD movies",
-      "Stream from laptop, phone, tablet and smart TVs",
-    ],
+    features: [],
+  },
+  {
+    name: "Weekend (Sat & Sun)",
+    price: "300",
+    duration: "weekend",
+    uid: "",
+    id: "",
+    features: [],
   },
   {
     name: "Weekly",
-    price: "8.00",
+    price: "500",
     duration: "Week",
-    uid: "mcini7days",
-    id: "1011",
-    features: [
-      "Watch on 3 screens at the same time",
-      "Unlimited HD movies",
-      "Stream from laptop, phone, tablet and smart TVs",
-    ],
+    uid: "",
+    id: "",
+    features: [],
   },
 ];
 
@@ -99,9 +99,7 @@ export default function Subscribe(): JSX.Element {
               animate={{ opacity: 1 }}
               className="bg-white p-5 rounded-md text-black grid gap-10 w-full max-w-[350px]"
             >
-              <h3 className="text-xl font-[600] text-center">
-                Choose your network
-              </h3>
+              <h3 className="text-xl font-[600] text-center">Choose your network</h3>
               <ul className="grid gap-10 grid-cols-2">
                 {NETWORKS.map((network: Network, index: number) => (
                   <li
